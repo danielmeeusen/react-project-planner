@@ -5,6 +5,8 @@ import Dashboard from "./components/dashboard/Dashboard";
 
 class App extends Component {
   render() {
+    console.log(process.env);
+    console.log(localStorage);
     return (
       <BrowserRouter>
         <div className="App">
