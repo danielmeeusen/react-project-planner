@@ -1,14 +1,16 @@
-import React, { Component } from "react";
-import Notifications from "./Notifications";
-import ProjectList from "../projects/ProjectList";
+import React, { Component } from 'react';
+import Notifications from './Notifications';
+import ProjectList from '../projects/ProjectList';
+import { connect } from 'react-redux';
 
 export class Dashboard extends Component {
   render() {
+    const { projects } = this.props;
     return (
       <div className="dashboard container">
         <div className="row">
           <div className="col s12 m6">
-            <ProjectList />
+            <ProjectList projects={projects} />
           </div>
           <div className="col s12 m5 offset-m1">
             <Notifications />
@@ -19,4 +21,14 @@ export class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+// state references the state in the redux store
+// project references the rootReducer object
+// projects references the init state in projectReducer
+// the projects key is what the passed props will be stored as
+const mapStateToProps = state => {
+  return {
+    projects: state.project.projects
+  };
+};
+
+export default connect(mapStateToProps)(Dashboard);

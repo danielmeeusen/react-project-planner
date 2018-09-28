@@ -1,12 +1,15 @@
-import React from "react";
-import ProjectSummary from "./ProjectSummary";
+import React from 'react';
+import ProjectSummary from './ProjectSummary';
 
-const ProjectList = () => {
+// argument is a destructuring from props
+const ProjectList = ({ projects }) => {
+  // projects && project.map functions as if(projects){ do this }
   return (
     <div className="project-list section">
-      <ProjectSummary />
-      <ProjectSummary />
-      <ProjectSummary />
+      {projects &&
+        projects.map(project => {
+          return <ProjectSummary project={project} key={project.id} />;
+        })}
     </div>
   );
 };
